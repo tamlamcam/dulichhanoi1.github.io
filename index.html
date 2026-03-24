@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo thuê xe</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      background: #007bff;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>Đặt xe</h3>
+  <input type="text" id="name" placeholder="Tên của bạn">
+  <input type="text" id="car" placeholder="Loại xe">
+  <button onclick="send()">Gửi</button>
+</div>
+
+<script>
+function send() {
+  const name = document.getElementById("name").value;
+  const car = document.getElementById("car").value;
+
+  const message = `Khách: ${name} - Xe: ${car}`;
+  alert("Đã lưu: " + message);
+
+  localStorage.setItem("booking", message);
+}
+
+// load lại dữ liệu
+window.onload = function() {
+  const saved = localStorage.getItem("booking");
+  if (saved) alert("Dữ liệu cũ: " + saved);
+}
+</script>
+
+</body>
+</html>
